@@ -11,7 +11,7 @@
         * C
             * 5.png
             * 6.png
-                        
+      
     选择A进行合成，会在root文件夹里生成：
     A.pdf       #包含1.png和2.png
     A.B.Pdf     ,包含3.png和4.png
