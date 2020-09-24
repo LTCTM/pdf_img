@@ -2,7 +2,6 @@ from Ui_MainWindow import *
 from processing import *
 from os.path import dirname, join
 from pathlib import Path
-import re
 
 
 class MainWindow(Ui_MainWindow):
