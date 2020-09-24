@@ -1,7 +1,7 @@
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
-import os.path
+from os.path import basename, splitext
 
 
 class Ui_MainWindow(QMainWindow):
@@ -63,9 +63,9 @@ class Ui_MainWindow(QMainWindow):
         QMetaObject.connectSlotsByName(self)
 
     def addTaskUI(self, taskName):
-        shortName = os.path.basename(taskName)
-        if taskName.lower().endswith(".pdf"):
-            labelText = f"PDF转图片——{shortName[:-4]}"
+        shortName = basename(taskName)
+        if splitext(shortName.lower())[1] == ".pdf":
+            labelText = f"PDF转图片——{splitext(shortName)[0]}"
         else:
             labelText = f"图片转PDF——{shortName}"
         # =====整体=====
