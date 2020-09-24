@@ -30,7 +30,7 @@ class _TaskImageToPdf(QThread):
             return
         with fitz.Document() as doc:
             for index, picName in enumerate(pics, start=1):
-                self._progress = index + 1
+                self._progress = index
                 try:
                     with fitz.open(picName) as img:
                         rect = img[0].rect
@@ -75,9 +75,9 @@ class _TaskPdfToImage(QThread):
             self._pageCount = doc.pageCount
             digits = get_digits(doc.pageCount)
             for index, page in enumerate(doc, 1):
-                self._progress = index + 1
+                self._progress = index
                 page.getPixmap(matrix=fitz.Matrix(*self._zoom)).writePNG(
-                    join(newDirName, f"P{str(index+1).zfill(digits)}.png")
+                    join(newDirName, f"P{str(index).zfill(digits)}.png")
                 )
 
     def _updateBar(self):
