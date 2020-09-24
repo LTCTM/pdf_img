@@ -18,3 +18,5 @@
     A.pdf       #包含1.png和2.png
     A.B.Pdf     #包含3.png和4.png
     A.B.C.pdf   #包含5.png和6.png
+    
+    运行main.pyw作为主程序。
