@@ -19,4 +19,4 @@
     A.B.Pdf     #包含3.png和4.png
     A.B.C.pdf   #包含5.png和6.png
     
-    运行main.pyw作为主程序。
+    运行“运行.bat”或者“main.pyw”作为主程序。
