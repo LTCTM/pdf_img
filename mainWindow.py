@@ -1,7 +1,7 @@
 from Ui_MainWindow import *
 from processing import *
 from os.path import dirname, join
-from pathlib import Path
+from os import walk
 
 
 class MainWindow(Ui_MainWindow):
@@ -23,13 +23,15 @@ class MainWindow(Ui_MainWindow):
         if filePath:
             self.addTaskUI(filePath)
             outputDir = filePath[:-4]
-            pdfToImageAsync(filePath, outputDir, self.getProgress, self.timer, self)
+            pdfToImageAsync(
+                filePath, outputDir, self.getProgress, self.timer, self, (2, 2)
+            )
 
     def tansfer_pics(self):
         dirPath = QFileDialog.getExistingDirectory(self)
         outputDir = dirname(dirPath).replace("/", "\\")
         if dirPath:
-            for curDir in (str(i) for i in Path.rglob(dirPath, "*") if i.is_dir()):
+            for curDir, subPics, subDirs in walk(dirPath):
                 self.addTaskUI(curDir)
                 shortName = curDir[len(outputDir) + 1 :].replace(
                     "\\", "."
