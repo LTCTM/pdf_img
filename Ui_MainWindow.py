@@ -100,19 +100,20 @@ class Ui_MainWindow(QMainWindow):
         self.listWidget.addItem(item)
         self.listWidget.setItemWidget(item, taskWidget)
         # =====记录=====
-        self._myTasks[taskName] = {}
-        self._myTasks[taskName]["bar"] = bar
-        self._myTasks[taskName]["listWidgetItem"] = item
-        self._myTasks[taskName]["progress"] = 0.0
+        self._myTasks[taskName] = {
+            "bar":bar,
+            "listWidgetItem":item,
+            "progress":0.0
+        }
 
     def updateBar(self):
         taskNames = list(self._myTasks.keys())
         for taskName in taskNames:
-            _dict = self._myTasks[taskName]
-            bar = _dict["bar"]
-            fvalue = _dict["progress"]
+            info = self._myTasks[taskName]
+            bar = info["bar"]
+            fvalue = info["progress"]
             if fvalue >= 1.0:
-                item = self._myTasks[taskName]["listWidgetItem"]
+                item = info["listWidgetItem"]
                 index = self.listWidget.indexFromItem(item).row()
                 self.listWidget.takeItem(index)
                 self._myTasks.pop(taskName)
