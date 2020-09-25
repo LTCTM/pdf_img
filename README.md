@@ -20,3 +20,5 @@
     A.B.C.pdf   #包含5.png和6.png
     
     运行“运行.bat”或者“main.pyw”作为主程序。
+
+使用前需要安装库pymupdf。推荐：pip pymupdf
